@@ -1,69 +1,123 @@
-import Image from "next/image";
+import Link from "next/link";
+import Hero from "@/components/Hero";
+import { Section, ExternalLink, Tag } from "@/components/ui";
+import BuildUnderstandValidate from "@/components/BuildUnderstandValidate";
+import EngineeringEvidence from "@/components/EngineeringEvidence";
+import TechStack from "@/components/TechStack";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
+import { links } from "@/data/links";
+import { livepulseOverview } from "@/data/livepulse";
+
+const principles = [
+  "Evidence over assumptions",
+  "Architecture proportional to requirements",
+  "Explicit trade-offs",
+  "Automated verification",
+  "Failure-mode thinking",
+  "Observable systems",
+  "Measured performance, not claimed performance",
+  "Human-owned engineering decisions",
+];
 
 export default function Home() {
+  const jobify = projects.find((p) => p.slug === "jobify")!;
+  const otherProjects = projects.filter((p) => p.slug !== "livepulse" && p.slug !== "jobify");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <Hero />
+
+      <Section eyebrow="Featured Engineering" title="LivePulse">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+          <div>
+            <p className="text-accent">{livepulseOverview.tagline}</p>
+            <p className="mt-3 text-base leading-relaxed text-muted">{livepulseOverview.description}</p>
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {["Kafka", "Redis", "PostgreSQL", "WebSockets", "Next.js", "Fastify", "Docker", "OpenTelemetry"].map((t) => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              <ExternalLink href={links.livepulse.live}>Live app</ExternalLink>
+              <ExternalLink href={links.livepulse.ops}>Ops dashboard</ExternalLink>
+              <ExternalLink href={links.livepulse.github}>GitHub</ExternalLink>
+              <Link href="/engineering/livepulse" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+                Read the full case study →
+              </Link>
+            </div>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <p className="mono text-xs uppercase tracking-widest text-muted">Status</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{livepulseOverview.status}</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="One Engineering Story" title="Build → Understand → Validate">
+        <BuildUnderstandValidate />
+      </Section>
+
+      <Section eyebrow="Recruiter View" title="Engineering Evidence">
+        <p className="mb-6 max-w-2xl text-sm text-muted">
+          Instead of a skills list, here is what each capability is actually backed by.
+        </p>
+        <EngineeringEvidence />
+      </Section>
+
+      <Section eyebrow="Also Built" title="Other Projects">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <ProjectCard project={jobify} />
+          {otherProjects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Technology" title="Working Stack">
+        <TechStack />
+      </Section>
+
+      <Section eyebrow="How I Engineer" title="Engineering Philosophy">
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {principles.map((p) => (
+            <li key={p} className="flex items-start gap-2 text-sm text-muted">
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+              {p}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section eyebrow="AI-Augmented Engineering" title="Where AI fits in how I build">
+        <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted">
+          <p>
+            AI tools are part of my day-to-day workflow — implementation acceleration, test
+            generation, refactoring support, code review assistance, debugging, and documentation.
+            LivePulse and its Architecture Lab were built with heavy AI-assisted implementation,
+            which is exactly why both projects document their engineering process, ADRs, and real
+            incidents so openly: the reasoning has to survive scrutiny independent of who typed the code.
+          </p>
+          <p className="font-medium text-foreground">
+            AI accelerates implementation; engineering judgment — what to build, which trade-offs to
+            accept, how to verify a claim — remains human-owned.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+      </Section>
+
+      <Section eyebrow="Get in Touch" title="Contact">
+        <div className="flex flex-wrap gap-3">
+          <a href={links.email} className="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90">
+            Email me
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href={links.linkedin} target="_blank" rel="noreferrer" className="rounded-md border border-border px-4 py-2.5 text-sm font-medium hover:bg-surface-2">
+            LinkedIn
+          </a>
+          <a href={links.github} target="_blank" rel="noreferrer" className="rounded-md border border-border px-4 py-2.5 text-sm font-medium hover:bg-surface-2">
+            GitHub
           </a>
         </div>
-      </main>
-    </div>
+      </Section>
+    </>
   );
 }

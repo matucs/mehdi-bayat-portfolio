@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mehdi Bayat — Portfolio
 
-## Getting Started
+Personal engineering portfolio built with Next.js 16 (App Router), TypeScript, and Tailwind CSS 4.
 
-First, run the development server:
+## Structure
+
+All content lives in `data/` as plain TypeScript objects — update these files rather than
+editing page components to change what the site shows:
+
+- `data/links.ts` — GitHub, LinkedIn, CV, and LivePulse/Architecture Lab/Scaling Demo URLs
+- `data/technologies.ts` — the categorized tech stack
+- `data/experience.ts` — CV-sourced work history, education, languages
+- `data/projects.ts` — project cards and the Engineering Evidence table
+- `data/livepulse.ts` — the LivePulse case study content (highlights, incidents, ADR summaries,
+  scaling stages, the Scaling Demo's measured results)
+
+To add a new project, add an entry to the `projects` array in `data/projects.ts` — the homepage
+and `/projects` page pick it up automatically. Set `featured: true` only for something with the
+depth of LivePulse.
+
+Pages live under `app/` (App Router): `/`, `/engineering/livepulse`, `/projects`,
+`/projects/jobify`, `/experience`, `/about`, `/contact`, plus `sitemap.ts` and `robots.ts`.
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality gates
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx tsc --noEmit   # typecheck
+npm run lint       # eslint (next/core-web-vitals + a11y rules)
+npm run build      # production build
+```
 
-## Learn More
+## Deployment (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
+1. Push this repository to GitHub.
+2. Import it in Vercel — no environment variables are required for the site to work.
+3. Set `NEXT_PUBLIC_SITE_URL=https://mehdi-bayat.online` as a Vercel project environment
+   variable once that domain is registered and attached to the project. Until then, SEO
+   metadata, `sitemap.xml`, and `robots.txt` fall back to Vercel's own deployment URL —
+   nothing is invented in the meantime.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No backend, database, or paid service is required.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Content policy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Every claim on this site (technologies, metrics, incidents, ADRs, measured vs. projected scaling
+numbers) is sourced from the actual LivePulse, Architecture Lab, Scaling Demo, and TalentMatch
+repositories, or from the CV. Nothing here is a placeholder statistic — see the "Measured" vs.
+"Architectural projection" labels on `/engineering/livepulse` for how that distinction is kept
+honest.
