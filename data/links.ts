@@ -15,4 +15,10 @@ export const links = {
   scalingDemo: {
     github: "https://github.com/matucs/scaling-demo-LivePulse",
   },
+  jobify: {
+    live: "https://jobify.158-180-19-147.nip.io",
+    docs: "https://jobify.158-180-19-147.nip.io/docs",
+    demo: "https://jobify.158-180-19-147.nip.io/demo",
+    github: "https://github.com/matucs/TalentMatch",
+  },
 } as const;

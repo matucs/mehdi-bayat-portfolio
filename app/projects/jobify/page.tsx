@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Section, Tag } from "@/components/ui";
+import { Section, ExternalLink, Tag } from "@/components/ui";
+import { links } from "@/data/links";
 
 export const metadata: Metadata = {
   title: "TalentMatch — Job Matching Backend",
@@ -33,6 +34,12 @@ export default function JobifyPage() {
           applications, deterministic scoring, production observability, CI/CD, Docker, and AWS
           ECS configuration are all implemented.
         </p>
+        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
+          <ExternalLink href={links.jobify.live}>Live API</ExternalLink>
+          <ExternalLink href={links.jobify.docs}>API docs</ExternalLink>
+          <ExternalLink href={links.jobify.demo}>Browser demo</ExternalLink>
+          <ExternalLink href={links.jobify.github}>GitHub</ExternalLink>
+        </div>
       </section>
 
       <Section title="What it demonstrates">

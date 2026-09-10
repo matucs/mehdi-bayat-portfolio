@@ -50,7 +50,9 @@ export const projects: Project[] = [
     description:
       "A modular-monolith backend for publishing jobs and matching candidates: a synchronous Fastify API plus an asynchronous BullMQ worker, with MongoDB as the source of truth, OpenSearch as a rebuildable read model, deterministic candidate scoring, idempotent applications, and a full AWS ECS/Fargate deployment configuration.",
     technologies: ["Fastify", "TypeScript", "MongoDB", "Redis", "BullMQ", "OpenSearch", "AWS ECS/Fargate", "Docker", "OIDC"],
-    featured: false,
+    github: links.jobify.github,
+    demo: links.jobify.live,
+    featured: true,
   },
 ];
 
