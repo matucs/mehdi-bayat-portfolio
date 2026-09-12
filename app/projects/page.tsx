@@ -65,9 +65,14 @@ export default function ProjectsPage() {
 
       <Section title="TalentMatch (Jobify)">
         <ProjectCard project={jobify} />
-        <Link href="/projects/jobify" className="mt-4 inline-block text-sm font-medium text-accent hover:underline underline-offset-4">
-          Read more →
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/projects/jobify" className="text-sm font-medium text-accent hover:underline underline-offset-4">
+            Read more →
+          </Link>
+          <Link href="/engineering/talentmatch" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+            Full case study →
+          </Link>
+        </div>
       </Section>
 
       <Section title="Extensions of the LivePulse story">

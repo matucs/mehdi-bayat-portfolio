@@ -6,6 +6,7 @@ import EngineeringMenu from "./EngineeringMenu";
 export const engineeringItems = [
   { href: "/engineering/livepulse", label: "LivePulse" },
   { href: "/engineering/agentforge", label: "AgentForge" },
+  { href: "/engineering/talentmatch", label: "TalentMatch" },
 ];
 
 const navItems = [

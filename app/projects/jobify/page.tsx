@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Section, ExternalLink, Tag } from "@/components/ui";
 import { links } from "@/data/links";
 
@@ -39,6 +40,9 @@ export default function JobifyPage() {
           <ExternalLink href={links.jobify.docs}>API docs</ExternalLink>
           <ExternalLink href={links.jobify.demo}>Browser demo</ExternalLink>
           <ExternalLink href={links.jobify.github}>GitHub</ExternalLink>
+          <Link href="/engineering/talentmatch" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+            Full engineering case study →
+          </Link>
         </div>
       </section>
 
