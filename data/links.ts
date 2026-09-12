@@ -21,4 +21,7 @@ export const links = {
     demo: "https://jobify.158-180-19-147.nip.io/demo",
     github: "https://github.com/matucs/TalentMatch",
   },
+  agentforge: {
+    github: "https://github.com/matucs/agentForge",
+  },
 } as const;

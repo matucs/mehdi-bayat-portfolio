@@ -43,6 +43,9 @@ export default function AboutPage() {
             On the AI side, I built Sportradar&apos;s first production RAG pipeline on AWS Bedrock, and I
             use AI tools daily for implementation, test generation, refactoring, and code review —
             but the engineering judgment behind what to build and how to verify it stays mine.
+            AgentForge is that principle turned into a system: a multi-agent pipeline where an
+            LLM&apos;s approval is never sufficient on its own, because a deterministic verification
+            gate and a risk-based policy engine make the final call instead.
           </p>
         </div>
       </Section>

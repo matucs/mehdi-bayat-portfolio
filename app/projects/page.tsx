@@ -7,14 +7,17 @@ import { links } from "@/data/links";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "LivePulse and its Architecture Lab and Scaling Demo, plus TalentMatch — a production-oriented job matching backend.",
+  description: "LivePulse and its Architecture Lab and Scaling Demo, AgentForge — a governed multi-agent engineering platform, plus TalentMatch — a production-oriented job matching backend.",
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   const livepulse = projects.find((p) => p.slug === "livepulse")!;
+  const agentforge = projects.find((p) => p.slug === "agentforge")!;
   const jobify = projects.find((p) => p.slug === "jobify")!;
-  const others = projects.filter((p) => p.slug !== "livepulse" && p.slug !== "jobify");
+  const others = projects.filter(
+    (p) => !["livepulse", "agentforge", "jobify"].includes(p.slug)
+  );
 
   return (
     <>
@@ -41,6 +44,21 @@ export default function ProjectsPage() {
             <Link href="/engineering/livepulse" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
               Full case study →
             </Link>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="AgentForge">
+        <div className="rounded-lg border border-border bg-surface p-6 sm:p-8">
+          <p className="text-accent">{agentforge.subtitle}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{agentforge.description}</p>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {agentforge.technologies.map((t) => (
+              <Tag key={t}>{t}</Tag>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            {agentforge.github && <ExternalLink href={agentforge.github}>GitHub</ExternalLink>}
           </div>
         </div>
       </Section>

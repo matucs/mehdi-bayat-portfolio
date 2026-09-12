@@ -22,7 +22,10 @@ const principles = [
 
 export default function Home() {
   const jobify = projects.find((p) => p.slug === "jobify")!;
-  const otherProjects = projects.filter((p) => p.slug !== "livepulse" && p.slug !== "jobify");
+  const agentforge = projects.find((p) => p.slug === "agentforge")!;
+  const otherProjects = projects.filter(
+    (p) => !["livepulse", "agentforge", "jobify"].includes(p.slug)
+  );
 
   return (
     <>
@@ -50,6 +53,35 @@ export default function Home() {
           <div className="rounded-lg border border-border bg-surface p-6">
             <p className="mono text-xs uppercase tracking-widest text-muted">Status</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">{livepulseOverview.status}</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Featured Engineering" title="AgentForge">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+          <div>
+            <p className="text-accent">{agentforge.subtitle}</p>
+            <p className="mt-3 text-base leading-relaxed text-muted">{agentforge.description}</p>
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {agentforge.technologies.map((t) => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {agentforge.github && <ExternalLink href={agentforge.github}>GitHub</ExternalLink>}
+              <Link href="/projects" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+                Read more →
+              </Link>
+            </div>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <p className="mono text-xs uppercase tracking-widest text-muted">Core principle</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              LLMs propose and reason. Deterministic systems verify. No agent&apos;s approval —
+              including the Reviewer&apos;s — is the final word: a real test failure or a real
+              detected secret overrides a simulated approval every time, proven with
+              failure-injection demos, not just asserted.
+            </p>
           </div>
         </div>
       </Section>
