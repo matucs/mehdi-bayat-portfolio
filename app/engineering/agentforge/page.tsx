@@ -12,7 +12,7 @@ import {
 } from "@/data/agentforge";
 
 export const metadata: Metadata = {
-  title: "AgentForge — Governed Autonomous Software Engineering Platform",
+  title: "AgentForge: Governed Autonomous Software Engineering Platform",
   description:
     "How AgentForge works: a LangGraph multi-agent pipeline, a deterministic verification gate and risk-based policy engine, real failure-injection demos, and the bugs found building it.",
   alternates: { canonical: "/engineering/agentforge" },
@@ -35,7 +35,7 @@ export default function AgentForgePage() {
         <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted">
           <p>
             AgentForge is a multi-agent system where Planner, Architect, Researcher, Developer, and
-            Reviewer are real LLM calls — but none of them, including the Reviewer, gets the final
+            Reviewer are real LLM calls, but none of them, including the Reviewer, gets the final
             word on whether a change ships. QA and Security run deterministic checks with no LLM
             involved at all, and a separate Verification Gate plus a risk-based Policy Engine make
             the actual pass/fail and merge/hold-for-approval decisions, enforced server-side so a
@@ -50,12 +50,12 @@ export default function AgentForgePage() {
           <div className="rounded-lg border border-border bg-surface p-6">
             <ol className="space-y-3 text-sm">
               {[
-                "Planner → Architect → Researcher — real LLM calls that turn a requirement into a plan, a design, and grounded research",
-                "Developer — a real LLM call that writes real file changes and commits them to a real git branch",
-                "Reviewer — a real LLM call producing structured findings, fed back to the Developer on a high-severity finding",
-                "QA — no LLM: runs the project's real test suite via subprocess; a failed test sends control back to the Developer regardless of the Reviewer's approval",
-                "Security — no LLM: a real regex scan for secret-shaped strings and risky constructs",
-                "Verification Gate → Policy Engine — no LLM in either: real type-check/lint/test/security results feed a fixed rule set, then a real risk classification decides auto-merge, block, or human approval",
+                "Planner, Architect, Researcher: real LLM calls that turn a requirement into a plan, a design, and grounded research",
+                "Developer: a real LLM call that writes real file changes and commits them to a real git branch",
+                "Reviewer: a real LLM call producing structured findings, fed back to the Developer on a high-severity finding",
+                "QA: no LLM. Runs the project's real test suite via subprocess; a failed test sends control back to the Developer regardless of the Reviewer's approval",
+                "Security: no LLM. A real regex scan for secret-shaped strings and risky constructs",
+                "Verification Gate, then Policy Engine: no LLM in either. Real type-check/lint/test/security results feed a fixed rule set, then a real risk classification decides auto-merge, block, or human approval",
               ].map((step, i) => (
                 <li key={step} className="flex gap-3">
                   <span className="mono flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs text-muted">
@@ -69,7 +69,7 @@ export default function AgentForgePage() {
           <div className="rounded-lg border border-border bg-surface p-6">
             <p className="mono text-xs uppercase tracking-widest text-muted">Why it&apos;s built this way</p>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              A single LLM judgment — however well-prompted — can miss a bug, hallucinate a false
+              A single LLM judgment, however well-prompted, can miss a bug, hallucinate a false
               &quot;looks good,&quot; or be inconsistent between two runs of the same input. Putting
               the Verification Gate and Policy Engine in a separate module with zero LLM calls means
               the same inputs always produce the same decision, independent of any model, and makes

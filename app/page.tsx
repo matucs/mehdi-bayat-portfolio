@@ -66,19 +66,26 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {agentforge.demo && <ExternalLink href={agentforge.demo}>Live Demo</ExternalLink>}
               {agentforge.github && <ExternalLink href={agentforge.github}>GitHub</ExternalLink>}
-              <Link href="/projects" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
-                Read more →
+              <Link href="/engineering/agentforge" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+                Read the full case study →
               </Link>
             </div>
           </div>
           <div className="rounded-lg border border-border bg-surface p-6">
             <p className="mono text-xs uppercase tracking-widest text-muted">Core principle</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              LLMs propose and reason. Deterministic systems verify. No agent&apos;s approval —
-              including the Reviewer&apos;s — is the final word: a real test failure or a real
+              LLMs propose and reason. Deterministic systems verify. No agent&apos;s approval,
+              including the Reviewer&apos;s, is the final word. A real test failure or a real
               detected secret overrides a simulated approval every time, proven with
               failure-injection demos, not just asserted.
+            </p>
+            <p className="mt-4 text-xs leading-relaxed text-muted">
+              The live demo runs against a real Postgres/Redis stack with no LLM key configured, so
+              the dashboard, agent registry, and deterministic verification/policy logic are all
+              real and live; starting a full agent run honestly reports &quot;Integration
+              unavailable&quot; rather than fake one.
             </p>
           </div>
         </div>

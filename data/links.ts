@@ -22,6 +22,8 @@ export const links = {
     github: "https://github.com/matucs/TalentMatch",
   },
   agentforge: {
+    live: "https://agentforge-two.vercel.app",
+    api: "https://agentforge.158-180-19-147.nip.io",
     github: "https://github.com/matucs/agentForge",
   },
 } as const;

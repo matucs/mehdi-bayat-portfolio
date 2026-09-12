@@ -7,7 +7,7 @@ import { links } from "@/data/links";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "LivePulse and its Architecture Lab and Scaling Demo, AgentForge — a governed multi-agent engineering platform, plus TalentMatch — a production-oriented job matching backend.",
+  description: "LivePulse and its Architecture Lab and Scaling Demo, AgentForge (a governed multi-agent engineering platform), plus TalentMatch, a production-oriented job matching backend.",
   alternates: { canonical: "/projects" },
 };
 
@@ -58,8 +58,17 @@ export default function ProjectsPage() {
             ))}
           </div>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            {agentforge.demo && <ExternalLink href={agentforge.demo}>Live Demo</ExternalLink>}
             {agentforge.github && <ExternalLink href={agentforge.github}>GitHub</ExternalLink>}
+            <Link href="/engineering/agentforge" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+              Full case study →
+            </Link>
           </div>
+          <p className="mt-4 text-xs leading-relaxed text-muted">
+            Deployed with no LLM key configured: the dashboard and deterministic verification/policy
+            logic are real and live, but starting a full agent run honestly reports &quot;Integration
+            unavailable&quot; rather than fake one.
+          </p>
         </div>
       </Section>
 

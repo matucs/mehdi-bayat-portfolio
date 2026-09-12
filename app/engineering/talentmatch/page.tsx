@@ -10,7 +10,7 @@ import {
 } from "@/data/talentmatch";
 
 export const metadata: Metadata = {
-  title: "TalentMatch — Production-Oriented Job Matching Backend",
+  title: "TalentMatch: Production-Oriented Job Matching Backend",
   description:
     "How TalentMatch works: the two-deployable architecture, idempotent applications, deterministic scoring, a documented trade-off, and the real decisions behind it.",
   alternates: { canonical: "/engineering/talentmatch" },
@@ -36,7 +36,7 @@ export default function TalentMatchPage() {
         <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-muted">
           <p>
             Publishing a job and applying to one look synchronous from the outside, but the work
-            behind them — search indexing, candidate scoring — is retryable and shouldn't block a
+            behind them (search indexing, candidate scoring) is retryable and shouldn't block a
             response. TalentMatch splits on exactly that line: the API handles the request/response
             use cases, a BullMQ worker handles the asynchronous effects, and MongoDB stays the one
             place domain truth actually lives.
@@ -51,9 +51,9 @@ export default function TalentMatchPage() {
             <ol className="space-y-3 text-sm">
               {[
                 "Employer publishes a job → API atomically marks it published and stores a pending indexSync marker in the same MongoDB update",
-                "API tries an immediate BullMQ enqueue for low latency — using the event ID as the job ID, so a crash between enqueue and acknowledgement can't create a duplicate",
-                "If enqueueing fails, the worker's relay discovers the pending marker on its own and retries — durability lives in the data, not in Redis staying up",
-                "Index worker reloads the canonical job from MongoDB and upserts or deletes the OpenSearch document — old commands arriving late still converge correctly",
+                "API tries an immediate BullMQ enqueue for low latency, using the event ID as the job ID, so a crash between enqueue and acknowledgement can't create a duplicate",
+                "If enqueueing fails, the worker's relay discovers the pending marker on its own and retries. Durability lives in the data, not in Redis staying up",
+                "Index worker reloads the canonical job from MongoDB and upserts or deletes the OpenSearch document. Old commands arriving late still converge correctly",
                 "Failed indexing attempts retry with exponential backoff; after 5 attempts, a diagnostic copy lands on a dead-letter queue for safe, idempotent replay",
                 "Candidate applies with an Idempotency-Key → a unique index plus a SHA-256 fingerprint tell a safe replay apart from an accidental key reuse with different input",
               ].map((step, i) => (

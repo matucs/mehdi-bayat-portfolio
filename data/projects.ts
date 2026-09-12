@@ -28,9 +28,10 @@ export const projects: Project[] = [
     title: "AgentForge",
     subtitle: "Governed Autonomous Software Engineering Platform",
     description:
-      "A LangGraph-orchestrated multi-agent system (Planner, Architect, Researcher, Developer, Reviewer, QA, Security) where no agent's approval is the final word: a deterministic verification gate (real type-checking, linting, test execution, static security scanning) and a risk-based human-approval policy engine decide what actually merges — proven with failure-injection demos where a real failing test overrides a simulated Reviewer approval.",
+      "A LangGraph-orchestrated multi-agent system (Planner, Architect, Researcher, Developer, Reviewer, QA, Security) where no agent's approval is the final word. A deterministic verification gate (real type-checking, linting, test execution, static security scanning) and a risk-based human-approval policy engine decide what actually merges, proven with failure-injection demos where a real failing test overrides a simulated Reviewer approval.",
     technologies: ["FastAPI", "LangGraph", "PostgreSQL", "SQLAlchemy", "Next.js", "TypeScript", "Docker", "OpenTelemetry", "Anthropic/OpenAI APIs"],
     github: links.agentforge.github,
+    demo: links.agentforge.live,
     featured: true,
   },
   {
@@ -82,5 +83,5 @@ export const engineeringEvidence: EvidenceRow[] = [
   { capability: "Scalability", evidence: "Scaling Demo — measured, not assumed, fan-out results across two real instances" },
   { capability: "Cloud", evidence: "AWS ECS/Fargate, DynamoDB, SQS/SNS, Cognito, CDK/Terraform used in production at Sportradar and in TalentMatch's deployment config" },
   { capability: "AI Engineering", evidence: "Team-built production RAG pipeline on AWS Bedrock for a Sportradar project (emBET); AI-assisted implementation workflow across personal projects" },
-  { capability: "Agentic AI systems", evidence: "AgentForge — a LangGraph multi-agent pipeline gated by a deterministic verification/policy engine, not by LLM judgment alone" },
+  { capability: "Agentic AI systems", evidence: "AgentForge: a LangGraph multi-agent pipeline gated by a deterministic verification/policy engine, not by LLM judgment alone" },
 ];
