@@ -1,7 +1,18 @@
 import { ExternalLink } from "./ui";
-import { type incidents } from "@/data/livepulse";
 
-type Incident = (typeof incidents)[number];
+export interface Incident {
+  id: string;
+  title: string;
+  date: string;
+  testFailed: string;
+  initialAssumption: string;
+  investigation: string;
+  rootCause: string;
+  fix: string;
+  verification: string;
+  lesson: string;
+  links: { label: string; url: string }[];
+}
 
 const steps: { key: keyof Incident; label: string }[] = [
   { key: "testFailed", label: "Test failed" },

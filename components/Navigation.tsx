@@ -1,9 +1,14 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import MobileNav from "./MobileNav";
+import EngineeringMenu from "./EngineeringMenu";
+
+export const engineeringItems = [
+  { href: "/engineering/livepulse", label: "LivePulse" },
+  { href: "/engineering/agentforge", label: "AgentForge" },
+];
 
 const navItems = [
-  { href: "/engineering/livepulse", label: "Engineering" },
   { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
   { href: "/about", label: "About" },
@@ -19,6 +24,9 @@ export default function Navigation() {
         </Link>
         <div className="hidden items-center gap-8 md:flex">
           <ul className="flex items-center gap-6 text-sm text-muted">
+            <li>
+              <EngineeringMenu items={engineeringItems} />
+            </li>
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-foreground">
@@ -31,7 +39,7 @@ export default function Navigation() {
         </div>
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
-          <MobileNav items={navItems} />
+          <MobileNav items={navItems} engineeringItems={engineeringItems} />
         </div>
       </nav>
     </header>
