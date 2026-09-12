@@ -27,7 +27,10 @@ export default function AgentForgePage() {
         <p className="mt-2 text-lg text-muted">{agentforgeOverview.tagline}</p>
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">{agentforgeOverview.description}</p>
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          <ExternalLink href={links.agentforge.live}>Live app</ExternalLink>
+          <ExternalLink href={links.agentforge.ops}>Ops dashboard</ExternalLink>
           <ExternalLink href={links.agentforge.github}>GitHub</ExternalLink>
+          <ExternalLink href={links.agentforge.caseStudy}>Full build log</ExternalLink>
         </div>
       </section>
 

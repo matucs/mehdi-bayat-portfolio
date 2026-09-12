@@ -23,7 +23,9 @@ export const links = {
   },
   agentforge: {
     live: "https://agentforge-two.vercel.app",
+    ops: "https://agentforge-two.vercel.app/operations",
     api: "https://agentforge.158-180-19-147.nip.io",
     github: "https://github.com/matucs/agentForge",
+    caseStudy: "https://claude.ai/code/artifact/814a75d1-c64b-45ba-9832-5eabbfaaaee5",
   },
 } as const;

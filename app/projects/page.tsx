@@ -58,7 +58,8 @@ export default function ProjectsPage() {
             ))}
           </div>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-            {agentforge.demo && <ExternalLink href={agentforge.demo}>Live Demo</ExternalLink>}
+            {agentforge.demo && <ExternalLink href={agentforge.demo}>Live app</ExternalLink>}
+            <ExternalLink href={links.agentforge.ops}>Ops dashboard</ExternalLink>
             {agentforge.github && <ExternalLink href={agentforge.github}>GitHub</ExternalLink>}
             <Link href="/engineering/agentforge" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
               Full case study →
