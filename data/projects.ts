@@ -81,6 +81,6 @@ export const engineeringEvidence: EvidenceRow[] = [
   { capability: "Testing", evidence: "Unit, integration, and Playwright E2E tests across LivePulse and TalentMatch, wired into CI" },
   { capability: "Scalability", evidence: "Scaling Demo — measured, not assumed, fan-out results across two real instances" },
   { capability: "Cloud", evidence: "AWS ECS/Fargate, DynamoDB, SQS/SNS, Cognito, CDK/Terraform used in production at Sportradar and in TalentMatch's deployment config" },
-  { capability: "AI Engineering", evidence: "Production RAG pipeline on AWS Bedrock (Sportradar); AI-assisted implementation workflow across personal projects" },
+  { capability: "AI Engineering", evidence: "Team-built production RAG pipeline on AWS Bedrock for a Sportradar project (emBET); AI-assisted implementation workflow across personal projects" },
   { capability: "Agentic AI systems", evidence: "AgentForge — a LangGraph multi-agent pipeline gated by a deterministic verification/policy engine, not by LLM judgment alone" },
 ];

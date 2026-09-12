@@ -40,7 +40,8 @@ export default function AboutPage() {
             went right.
           </p>
           <p>
-            On the AI side, I built Sportradar&apos;s first production RAG pipeline on AWS Bedrock, and I
+            On the AI side, I was part of the team that built the first production RAG pipeline on
+            AWS Bedrock for one of Sportradar&apos;s projects, and I
             use AI tools daily for implementation, test generation, refactoring, and code review —
             but the engineering judgment behind what to build and how to verify it stays mine.
             AgentForge is that principle turned into a system: a multi-agent pipeline where an
