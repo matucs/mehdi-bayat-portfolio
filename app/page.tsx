@@ -23,9 +23,7 @@ const principles = [
 export default function Home() {
   const jobify = projects.find((p) => p.slug === "jobify")!;
   const agentforge = projects.find((p) => p.slug === "agentforge")!;
-  const otherProjects = projects.filter(
-    (p) => !["livepulse", "agentforge", "jobify"].includes(p.slug)
-  );
+  const otherProjects = projects.filter((p) => !["livepulse", "jobify"].includes(p.slug));
 
   return (
     <>
