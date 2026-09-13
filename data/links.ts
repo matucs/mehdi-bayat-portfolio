@@ -29,9 +29,8 @@ export const links = {
     caseStudy: "https://claude.ai/code/artifact/814a75d1-c64b-45ba-9832-5eabbfaaaee5",
   },
   liveops: {
-    // filled in once the Oracle VM deployment is confirmed working —
-    // deliberately left undefined rather than pointing at a URL that 404s.
-    live: undefined as string | undefined,
+    // Live: Oracle Cloud free tier, Docker + Caddy, real Let's Encrypt TLS.
+    live: "https://liveops.130-61-191-125.nip.io",
     github: "https://github.com/matucs/LiveOps",
     caseStudy: "https://claude.ai/code/artifact/cd104abd-e269-4ee2-a125-d6ca1b7ae08a",
   },
