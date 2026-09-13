@@ -14,9 +14,10 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const livepulse = projects.find((p) => p.slug === "livepulse")!;
   const agentforge = projects.find((p) => p.slug === "agentforge")!;
+  const liveops = projects.find((p) => p.slug === "liveops")!;
   const jobify = projects.find((p) => p.slug === "jobify")!;
   const others = projects.filter(
-    (p) => !["livepulse", "agentforge", "jobify"].includes(p.slug)
+    (p) => !["livepulse", "agentforge", "liveops", "jobify"].includes(p.slug)
   );
 
   return (
@@ -70,6 +71,25 @@ export default function ProjectsPage() {
             logic are real and live, but starting a full agent run honestly reports &quot;Integration
             unavailable&quot; rather than fake one.
           </p>
+        </div>
+      </Section>
+
+      <Section title="LiveOps">
+        <div className="rounded-lg border border-border bg-surface p-6 sm:p-8">
+          <p className="text-accent">{liveops.subtitle}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{liveops.description}</p>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {liveops.technologies.map((t) => (
+              <Tag key={t}>{t}</Tag>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            {liveops.github && <ExternalLink href={liveops.github}>GitHub</ExternalLink>}
+            {liveops.demo && <ExternalLink href={liveops.demo}>Live Demo</ExternalLink>}
+            <Link href="/engineering/liveops" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+              Full case study →
+            </Link>
+          </div>
         </div>
       </Section>
 

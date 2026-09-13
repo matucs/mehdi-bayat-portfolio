@@ -8,6 +8,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 import { links } from "@/data/links";
 import { livepulseOverview } from "@/data/livepulse";
+import { liveopsOverview } from "@/data/liveops";
 
 const principles = [
   "Evidence over assumptions",
@@ -23,7 +24,8 @@ const principles = [
 export default function Home() {
   const jobify = projects.find((p) => p.slug === "jobify")!;
   const agentforge = projects.find((p) => p.slug === "agentforge")!;
-  const otherProjects = projects.filter((p) => !["livepulse", "jobify"].includes(p.slug));
+  const liveops = projects.find((p) => p.slug === "liveops")!;
+  const otherProjects = projects.filter((p) => !["livepulse", "jobify", "liveops"].includes(p.slug));
 
   return (
     <>
@@ -88,6 +90,31 @@ export default function Home() {
               real and live; starting a full agent run honestly reports &quot;Integration
               unavailable&quot; rather than fake one.
             </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Featured Engineering" title="LiveOps">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+          <div>
+            <p className="text-accent">{liveops.subtitle}</p>
+            <p className="mt-3 text-base leading-relaxed text-muted">{liveops.description}</p>
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {liveops.technologies.map((t) => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {liveops.demo && <ExternalLink href={liveops.demo}>Live app</ExternalLink>}
+              {liveops.github && <ExternalLink href={liveops.github}>GitHub</ExternalLink>}
+              <Link href="/engineering/liveops" className="text-sm font-medium text-foreground hover:underline underline-offset-4">
+                Read the full case study →
+              </Link>
+            </div>
+          </div>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <p className="mono text-xs uppercase tracking-widest text-muted">Status</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{liveopsOverview.status}</p>
           </div>
         </div>
       </Section>

@@ -35,6 +35,17 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "liveops",
+    title: "LiveOps",
+    subtitle: "Real-Time Event Processing & Workflow Platform",
+    description:
+      "A modular-monolith event-driven platform: idempotent ingest, a transactional outbox, a Postgres-backed event bus, a workflow engine running real sagas with orchestrated compensation, CQRS projections, and a live dashboard with a working chaos panel — with a load test that found and fixed two real bottlenecks, including one fix that was tried and measured as not helping.",
+    technologies: ["TypeScript", "Fastify", "Next.js", "PostgreSQL", "Docker", "Server-Sent Events"],
+    github: links.liveops.github,
+    // demo: filled in once the Oracle VM deployment is confirmed live.
+    featured: true,
+  },
+  {
     slug: "architecture-lab",
     title: "Architecture Lab",
     subtitle: "Interactive exploration of the LivePulse architecture",
@@ -73,12 +84,14 @@ export interface EvidenceRow {
 }
 
 export const engineeringEvidence: EvidenceRow[] = [
-  { capability: "Distributed systems", evidence: "LivePulse's event-driven ingestion → change detection → Kafka pipeline" },
-  { capability: "Real-time systems", evidence: "WebSocket gateway architecture, validated by the Scaling Demo's real fan-out measurements" },
-  { capability: "Messaging", evidence: "Kafka topics and consumer groups (LivePulse), RabbitMQ event bus (Sportradar)" },
+  { capability: "Distributed systems", evidence: "LivePulse's event-driven ingestion → change detection → Kafka pipeline; LiveOps's transactional outbox and Postgres-backed event bus" },
+  { capability: "Workflow orchestration & sagas", evidence: "LiveOps's WorkflowEngine — a real multi-step saga with orchestrated compensation, verified to roll back in exact reverse order via a forced permanent step failure" },
+  { capability: "Real-time systems", evidence: "WebSocket gateway architecture, validated by the Scaling Demo's real fan-out measurements; LiveOps's live SSE dashboard" },
+  { capability: "Messaging", evidence: "Kafka topics and consumer groups (LivePulse), RabbitMQ event bus (Sportradar), a Postgres-backed event bus with independent consumer groups (LiveOps)" },
   { capability: "Distributed state", evidence: "Redis cache-aside and pub/sub design with documented failure modes (ADR-004)" },
-  { capability: "Reliability", evidence: "A real production incident investigated and fixed — the WebSocket subscribe race" },
-  { capability: "Architecture", evidence: "8 accepted ADRs plus the interactive Architecture Lab exploring them" },
+  { capability: "Reliability", evidence: "A real production incident investigated and fixed — the WebSocket subscribe race; LiveOps's crash-resume tests (killed the live process mid-batch, mid-workflow, and pre-dispatch)" },
+  { capability: "Performance engineering", evidence: "LiveOps's load test found and fixed two real bottlenecks — including one candidate fix measured and found not to help, kept in the record" },
+  { capability: "Architecture", evidence: "8 accepted ADRs plus the interactive Architecture Lab exploring them; 8 more ADRs on LiveOps" },
   { capability: "Testing", evidence: "Unit, integration, and Playwright E2E tests across LivePulse and TalentMatch, wired into CI" },
   { capability: "Scalability", evidence: "Scaling Demo — measured, not assumed, fan-out results across two real instances" },
   { capability: "Cloud", evidence: "AWS ECS/Fargate, DynamoDB, SQS/SNS, Cognito, CDK/Terraform used in production at Sportradar and in TalentMatch's deployment config" },
